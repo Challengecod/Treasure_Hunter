@@ -102,7 +102,7 @@ public class Town
             noTroubleChance = 0.33;
         }
 
-        if (Math.random() > noTroubleChance)
+        if (Math.random() > noTroubleChance) // greater than 0.66
         {
             printMessage = "You couldn't find any trouble";
         }
@@ -110,7 +110,7 @@ public class Town
         {
             printMessage = "You want trouble, stranger!  You got it!\nOof! Umph! Ow!\n";
             int goldDiff = (int)(Math.random() * 10) + 1;
-            if (Math.random() > noTroubleChance)
+            if (Math.random() > noTroubleChance) // greater than 0.3
             {
                 printMessage += "Okay, stranger! You proved yer mettle. Here, take my gold.";
                 printMessage += "\nYou won the brawl and receive " +  goldDiff + " gold.";
