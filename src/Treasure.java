@@ -2,12 +2,14 @@ public class Treasure {
     private String firstTreasure = "Horse Bone";
     private String secondTreasure = "candy";
     private String thirdTreasure = "fish";
+    private boolean ifTreasureFound = false;
     // three types of treasures
     // secondTreasure in the town
     // firstTreausre
 
     // search secondtreasure or nothing
     // first
+    //boolean ifTreasureFound  = false
 
 
 
@@ -42,8 +44,12 @@ public class Treasure {
 
     public String findTreasure(){
         double chance = Math.random();
+        if (!ifTreasureFound){
+
+        }
 
         if(chance > 0.5){
+            ifTreasureFound = true;
             return treasureChance() + "found";
         }
 
