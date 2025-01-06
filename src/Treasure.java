@@ -27,6 +27,9 @@ public class Treasure {
         return "Nothing found";
     }
 
+    public String addKit(){
+
+    }
 
 
 
