@@ -28,7 +28,7 @@ public class Treasure {
     }
 
     public String addKit(){
-
+        kit.add
     }
 
 
