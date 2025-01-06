@@ -2,54 +2,33 @@ public class Treasure {
     private String firstTreasure = "Horse Bone";
     private String secondTreasure = "candy";
     private String thirdTreasure = "fish";
-    // three types of treasures
-    // secondTreasure in the town
-    // firstTreausre
-
-    // search secondtreasure or nothing
-    // first
-
-
+    // the three types of treasures
 
     public Treasure(){
 
-
     }
 
-    //first Town
-    public void hunterArrives(Hunter hunter) {
-
-    }
-
-
+    // 25 percent chance to find the treasure
     public String treasureChance(){
         double chance = Math.random();
 
-        if(chance > 0.66){
+        if(chance > 0.75){
             return firstTreasure;
         }
 
-        if(chance > 0.33){
+        else if(chance > 0.5){
             return secondTreasure;
         }
 
-        if(chance > 0){
+        else if(chance > 0.25){
             return thirdTreasure;
         }
 
-        return "tresuare";
+        return "Nothing found";
     }
 
-    public String findTreasure(){
-        double chance = Math.random();
+    public
 
-        if(chance > 0.5){
-            return treasureChance() + "found";
-        }
 
-        else {
-            return "Nothing found";
-        }
-    }
 
 }
