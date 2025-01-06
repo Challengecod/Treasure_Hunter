@@ -88,6 +88,9 @@ public class TreasureHunter
         // constructor for Town, but this illustrates another way to associate
         // an object with an object of a different class
         currentTown.hunterArrives(hunter);
+
+        // treasure
+        treasure = new Treasure(hunter);
     }
 
     /**
@@ -145,7 +148,8 @@ public class TreasureHunter
             currentTown.lookForTrouble();
         }
         else if (choice.equals("F") || choice.equals("f")){
-            treasure.findTreasure;
+            System.out.println("Finding treasure");
+            treasure.findTreasure();
         }
         else if (choice.equals("X") || choice.equals("x"))
         {
