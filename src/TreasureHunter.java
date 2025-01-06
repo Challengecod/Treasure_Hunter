@@ -12,6 +12,7 @@ public class TreasureHunter
     private Town currentTown;
     private Hunter hunter;
     private boolean hardMode;
+    private Treasure treasure;
 
     //Constructor
     /**
@@ -110,6 +111,7 @@ public class TreasureHunter
             System.out.println("(S)ell something at the shop.");
             System.out.println("(M)ove on to a different town.");
             System.out.println("(L)ook for trouble!");
+            System.out.println("(F)ind treasure!");
             System.out.println("Give up the hunt and e(X)it.");
             System.out.println();
             System.out.print("What's your next move? ");
@@ -141,6 +143,9 @@ public class TreasureHunter
         else if (choice.equals("L") || choice.equals("l"))
         {
             currentTown.lookForTrouble();
+        }
+        else if (choice.equals("F") || choice.equals("f")){
+            treasure.findTreasure;
         }
         else if (choice.equals("X") || choice.equals("x"))
         {
