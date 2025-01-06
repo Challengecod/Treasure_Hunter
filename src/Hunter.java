@@ -8,10 +8,12 @@ public class Hunter
 {
     //Keeps the items in the kit separate
     private static final String KIT_DELIMITER = ";";
+    private static final String TREASUREKIT_DELIMITER = ";";
 
     //instance variables
     private String hunterName;
     private String kit;
+    private String treasureKit;
     private int gold;
 
     //Constructor
@@ -73,12 +75,58 @@ public class Hunter
         return true;
     }
 
+    // Our TreasureKit List
+
     public boolean addTreasure(String treasure){
-        if(addItem(treasure)){
+        if(addTreasureKit(treasure)){
             return true;
         }
         return false;
     }
+
+    private boolean addTreasureKit( String treasure){
+        treasureKit += treasure;
+
+        if(hasTreasure(treasure)){
+            boolean inTreasureKit = true;
+        }
+
+    }
+
+    public boolean hasTreasure(String item)
+    {
+        int placeholder = 0;
+
+        while (placeholder < treasureKit.length() - 1)
+        {
+            int endOfItem = treasureKit.indexOf(TREASUREKIT_DELIMITER, placeholder);
+            String tmpItem = treasureKit.substring(placeholder, endOfItem);
+            placeholder = endOfItem + 1;
+            if (tmpItem.equals(item))
+            {
+                // early return
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void removeTreasureFromKit(String item)
+    {
+        int itmIdx = kit.indexOf(item);
+
+        // if item is found
+        if (itmIdx >= 0)
+        {
+            String tmpKit = kit.substring(0, itmIdx);
+            int endIdx = kit.indexOf(KIT_DELIMITER, itmIdx);
+            tmpKit += kit.substring(endIdx + 1);
+
+            // update kit
+            kit = tmpKit;
+        }
+    }
+
 
     /**
      * The Hunter is selling an item to a shop for gold.<p>

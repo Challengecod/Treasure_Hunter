@@ -7,16 +7,27 @@ public class Treasure {
     private Hunter hunter;
     // the three types of treasures
 
-    public Treasure(){
-        this.hunter = null;
+    public Treasure(Hunter hunter){
+        this.hunter = hunter;
     }
 
-    public void enter(Hunter hunter){
-        this.hunter = hunter;
+    public void findTreasure(){
+        System.out.println("Method works");
         String treasureFound = treasureChance();
 
-        if(hunter.addTreasure(treasureFound) == false){
-            System.out.println("You have already found the treasure.");
+        if(!treasureFound.equals("Nothing")) {
+            if (hunter.addTreasure(treasureFound) == false) {
+                System.out.println("You have already found the treasure.");
+            }
+
+            else {
+                System.out.println("Congrats you have found " + treasureFound + "!");
+
+            }
+        }
+
+        else{
+            System.out.println("You didn't find anything! \uD83D\uDE2D ");
         }
 
     }
