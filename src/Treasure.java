@@ -2,6 +2,7 @@ public class Treasure {
     private String firstTreasure = "Horse Bone";
     private String secondTreasure = "candy";
     private String thirdTreasure = "fish";
+
     // the three types of treasures
 
     public Treasure(){
@@ -27,9 +28,10 @@ public class Treasure {
         return "Nothing found";
     }
 
-    public String addKit(){
-        Shop new = shop
+    public void addTreasureKit(){
+        treasureChance();
     }
+
 
 
 
