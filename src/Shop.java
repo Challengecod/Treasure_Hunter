@@ -40,7 +40,8 @@ public class Shop
             System.out.println(inventory());
             System.out.print("What're you lookin' to buy? ");
             String item = scanner.nextLine();
-            int cost = checkMarketPrice(item, true);
+            String newString  = item.substring(0,1).toUpperCase() + item.substring(1).toLowerCase();
+            int cost = checkMarketPrice(newString, true);
             if (cost == 0)
             {
                 System.out.println("We ain't got none of those.");
