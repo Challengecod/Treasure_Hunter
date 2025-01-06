@@ -12,7 +12,6 @@ public class Hunter
     //instance variables
     private String hunterName;
     private String kit;
-    private String treasureKit;
     private int gold;
 
     //Constructor
@@ -26,7 +25,7 @@ public class Hunter
         this.hunterName = hunterName;
         kit = "";
         gold = startingGold;
-        treasureKit = "";
+
     }
 
     //Accessors
@@ -38,11 +37,6 @@ public class Hunter
     public String getKit()
     {
         return kit;
-    }
-
-    public String getTreasureKit()
-    {
-        return treasureKit;
     }
 
     public int getGold()
@@ -77,6 +71,13 @@ public class Hunter
         gold -= costOfItem;
         addItem(item);
         return true;
+    }
+
+    public boolean addTreasure(String treasure){
+        if(addItem(treasure)){
+            return true;
+        }
+        return false;
     }
 
     /**
