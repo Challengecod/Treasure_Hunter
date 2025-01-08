@@ -2,8 +2,12 @@ import java.sql.SQLOutput;
 
 public class Treasure {
     private String firstTreasure = "Horse Bone";
-    private String secondTreasure = "candy";
-    private String thirdTreasure = "fish";
+    private String secondTreasure = "Candy";
+    private String thirdTreasure = "Fish";
+    private boolean first = false;
+    private boolean second = false;
+    private boolean third = false;
+
     private Hunter hunter;
     // the three types of treasures
 
@@ -11,18 +15,30 @@ public class Treasure {
         this.hunter = hunter;
     }
 
+    public void discardTreasure(String treasure){
+        hunter.removeTreasureFromKit(treasure);
+        System.out.println(hunter.getTreasureInventory());
+
+    }
+
+
     public void findTreasure(){
-        System.out.println("Method works");
+
         String treasureFound = treasureChance();
 
-        if(!treasureFound.equals("Nothing")) {
-            if (hunter.addTreasure(treasureFound) == false) {
-                System.out.println("You have already found the treasure.");
+        if(!treasureFound.equals("Nothing found")) {
+
+            if (hunter.addTreasure(treasureFound)) {
+                System.out.println("Congrats you have found " + treasureFound + "!");
+                System.out.println("You have already found " + treasureFound + " before.");
+                System.out.println(hunter.getTreasureInventory());
+                System.out.println("You should discard the treasure");
+
             }
 
             else {
                 System.out.println("Congrats you have found " + treasureFound + "!");
-
+                System.out.println(hunter.getTreasureInventory());
             }
         }
 
@@ -38,14 +54,17 @@ public class Treasure {
         double chance = Math.random();
 
         if(chance > 0.75){
+            first = true;
             return firstTreasure;
         }
 
         else if(chance > 0.5){
+            second = true;
             return secondTreasure;
         }
 
         else if(chance > 0.25){
+            third = true;
             return thirdTreasure;
         }
 

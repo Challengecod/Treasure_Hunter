@@ -13,6 +13,8 @@ public class TreasureHunter
     private Hunter hunter;
     private boolean hardMode;
     private Treasure treasure;
+    private int newTown = 0;
+
 
     //Constructor
     /**
@@ -62,6 +64,7 @@ public class TreasureHunter
      */
     private void enterTown()
     {
+        newTown = 0;
         double markdown = 0.25;
         double toughness = 0.4;
         if (hardMode)
@@ -109,12 +112,14 @@ public class TreasureHunter
             System.out.println(currentTown.getLatestNews());
             System.out.println("***");
             System.out.println(hunter);
+            System.out.println(hunter.getTreasureInventory());
             System.out.println(currentTown);
             System.out.println("(B)uy something at the shop.");
             System.out.println("(S)ell something at the shop.");
             System.out.println("(M)ove on to a different town.");
             System.out.println("(L)ook for trouble!");
             System.out.println("(F)ind treasure!");
+            System.out.println("(D)iscard a treasure.");
             System.out.println("Give up the hunt and e(X)it.");
             System.out.println();
             System.out.print("What's your next move? ");
@@ -138,6 +143,7 @@ public class TreasureHunter
         {
             if (currentTown.leaveTown())
             {
+                boolean newTown = true;
                 //This town is going away so print its news ahead of time.
                 System.out.println(currentTown.getLatestNews());
                 enterTown();
@@ -147,9 +153,25 @@ public class TreasureHunter
         {
             currentTown.lookForTrouble();
         }
+
         else if (choice.equals("F") || choice.equals("f")){
-            System.out.println("Finding treasure");
-            treasure.findTreasure();
+
+            if(newTown == 0) {
+                System.out.println("Finding treasure");
+                treasure.findTreasure();
+            }
+            else{
+                System.out.println("Finding treasure may only be used once a town");
+                System.out.println("Move to the next town to search again");
+            }
+
+            newTown = newTown + 1;
+        }
+        else if (choice.equals("D") || choice.equals("d")){
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Type the treasure you want to discard: ");
+            String toDiscard = scanner.nextLine();
+            treasure.discardTreasure(toDiscard);
         }
         else if (choice.equals("X") || choice.equals("x"))
         {
