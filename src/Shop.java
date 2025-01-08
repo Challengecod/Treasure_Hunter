@@ -53,7 +53,7 @@ public class Shop
 
                 if (option.equals("y") || option.equals("Y"))
                 {
-                    buyItem(item);
+                    buyItem(newString);
                 }
             }
         }
@@ -62,7 +62,8 @@ public class Shop
             System.out.println("What're you lookin' to sell? ");
             System.out.print("You currently have the following items: " + customer.getInventory());
             String item = scanner.nextLine();
-            int cost = checkMarketPrice(item, false);
+            String newString  = item.substring(0,1).toUpperCase() + item.substring(1).toLowerCase();
+            int cost = checkMarketPrice(newString, false);
             if (cost == 0)
             {
                 System.out.println("We don't want none of those.");
@@ -74,7 +75,7 @@ public class Shop
 
                 if (option.equals("y") || option.equals("Y"))
                 {
-                    sellItem(item);
+                    sellItem(newString);
                 }
             }
         }
@@ -118,8 +119,9 @@ public class Shop
      */
     public void sellItem(String item)
     {
-        int buyBackPrice = checkMarketPrice(item, false);
-        if (customer.sellItem(item, buyBackPrice))
+        String newString  = item.substring(0,1).toUpperCase() + item.substring(1).toLowerCase();
+        int buyBackPrice = checkMarketPrice(newString, false);
+        if (customer.sellItem(newString, buyBackPrice))
         {
             System.out.println("Pleasure doin' business with you.");
         }

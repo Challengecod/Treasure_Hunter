@@ -13,7 +13,7 @@ public class Hunter
     //instance variables
     private String hunterName;
     private String kit;
-    private String treasureKit = "Treasure Found: ";
+    private String treasureKit;
     private int gold;
 
     //Constructor
@@ -78,41 +78,52 @@ public class Hunter
     // Our TreasureKit List
 
     public boolean addTreasure(String treasure){
-        boolean contains  = false;
+        if(addTreasureKit(treasure)){
+            return true;
+        }
+        return false;
+    }
 
-        if (treasureKit.contains(treasure))
-        {
-            // early return
-            contains = true;
+    private boolean addTreasureKit( String treasure){
+        treasureKit += treasure;
+
+        if(hasTreasure(treasure)){
+            boolean inTreasureKit = true;
         }
 
-        addTreasureKit(treasure);
-
-        return contains;
-
     }
 
-    private void addTreasureKit( String treasure){
-        treasureKit += treasure + " ";
+    public boolean hasTreasure(String item)
+    {
+        int placeholder = 0;
 
+        while (placeholder < treasureKit.length() - 1)
+        {
+            int endOfItem = treasureKit.indexOf(TREASUREKIT_DELIMITER, placeholder);
+            String tmpItem = treasureKit.substring(placeholder, endOfItem);
+            placeholder = endOfItem + 1;
+            if (tmpItem.equals(item))
+            {
+                // early return
+                return true;
+            }
+        }
+        return false;
     }
-
-
 
     public void removeTreasureFromKit(String item)
     {
-        int itmIdx = treasureKit.indexOf(item);
+        int itmIdx = kit.indexOf(item);
 
         // if item is found
         if (itmIdx >= 0)
         {
-            String tmpKit = treasureKit.substring(0, itmIdx);
-            int endIdx = item.length();
-            itmIdx += endIdx;
-            tmpKit += treasureKit.substring(itmIdx + 1 );
+            String tmpKit = kit.substring(0, itmIdx);
+            int endIdx = kit.indexOf(KIT_DELIMITER, itmIdx);
+            tmpKit += kit.substring(endIdx + 1);
 
             // update kit
-            treasureKit = tmpKit;
+            kit = tmpKit;
         }
     }
 
@@ -156,17 +167,6 @@ public class Hunter
             // update kit
             kit = tmpKit;
         }
-    }
-
-    public String getTreasureInventory()
-    {   String regex = " ";
-        String arr[] = treasureKit.split(regex);
-        String fullList = "";
-
-        for(int i = 0; i < arr.length; i++){
-            fullList += arr[i] + " ";
-        }
-        return fullList;
     }
 
     /**
