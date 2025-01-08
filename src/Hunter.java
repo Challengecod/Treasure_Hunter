@@ -90,7 +90,7 @@ public class Hunter
         if(hasTreasure(treasure)){
             boolean inTreasureKit = true;
         }
-
+return true;
     }
 
     public boolean hasTreasure(String item)
