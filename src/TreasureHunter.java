@@ -4,6 +4,7 @@
  * It handles all of the display based on the messages it receives from the Town object.
  *
  */
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class TreasureHunter
@@ -169,6 +170,7 @@ public class TreasureHunter
             System.out.println("(L)ook for trouble!");
             System.out.println("(F)ind treasure!");
             System.out.println("(D)iscard a treasure.");
+            System.out.println("(C)asino Time to Gamble!");
             System.out.println("Give up the hunt and e(X)it.");
             System.out.println();
             System.out.print("What's your next move? ");
@@ -222,6 +224,19 @@ public class TreasureHunter
             System.out.println("Type the treasure you want to discard: ");
             String toDiscard = scanner.nextLine();
             treasure.discardTreasure(toDiscard);
+        }
+
+        else if (choice.equals("C") || choice.equals("c")){
+            if(hunter.getGold() > 0) {
+                Scanner scanner = new Scanner(System.in);
+                System.out.println("You've entered a Casino!");
+                System.out.println("Type how much you want to wager: ");
+                String wager = scanner.nextLine();
+            }
+            else{
+                System.out.println("You don't have enough gold to play at the Casino.");
+                System.out.println("Come Back once you have more gold!");
+            }
         }
         else if (choice.equals("X") || choice.equals("x"))
         {
