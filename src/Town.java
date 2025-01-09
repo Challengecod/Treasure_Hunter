@@ -92,6 +92,7 @@ public class Town
      */
     public void lookForTrouble()
     {
+
         double noTroubleChance;
         if (toughTown)
         {
