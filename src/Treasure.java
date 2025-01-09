@@ -7,6 +7,7 @@ public class Treasure {
     private boolean first = false;
     private boolean second = false;
     private boolean third = false;
+    private String printMessage = "";
 
     private Hunter hunter;
     // the three types of treasures
@@ -17,35 +18,44 @@ public class Treasure {
 
     public void discardTreasure(String treasure){
         hunter.removeTreasureFromKit(treasure);
-        System.out.println(hunter.getTreasureInventory());
+        printMessage = hunter.getTreasureInventory();
 
     }
 
+    public String getPrintMessage(){
+        return printMessage;
+    }
 
-    public void findTreasure(){
 
-        String treasureFound = treasureChance();
 
-        if(!treasureFound.equals("Nothing found")) {
+    public void findTreasure() {
+        if (!allTreasureFound()) {
+            String treasureFound = treasureChance();
 
-            if (hunter.addTreasure(treasureFound)) {
-                System.out.println("Congrats you have found " + treasureFound + "!");
-                System.out.println("You have already found " + treasureFound + " before.");
-                System.out.println(hunter.getTreasureInventory());
-                System.out.println("You should discard the treasure");
+            if (!treasureFound.equals("Nothing found")) {
 
+                if (hunter.addTreasure(treasureFound)) {
+                    printMessage = "Congrats you have found " + treasureFound + "! \n" +
+                                    "You have already found " + treasureFound + " before. \n" +
+                                    hunter.getTreasureInventory() +  "\n" +
+                                    "You should discard the treasure";
+
+                }
+
+                else {
+                    printMessage = "Congrats you have found " + treasureFound + "! \n" +
+                                    hunter.getTreasureInventory();
+                }
             }
 
             else {
-                System.out.println("Congrats you have found " + treasureFound + "!");
-                System.out.println(hunter.getTreasureInventory());
+                printMessage = "You didn't find anything! \uD83D\uDE2D ";
             }
         }
 
         else{
-            System.out.println("You didn't find anything! \uD83D\uDE2D ");
+            printMessage = "Game Ends! ";
         }
-
     }
 
 
@@ -71,8 +81,14 @@ public class Treasure {
         return "Nothing found";
     }
 
-    public void addTreasureKit(){
-        treasureChance();
+    public boolean allTreasureFound(){
+       if(first && second && third){
+           return true;
+       }
+
+
+           return false;
+
     }
 
 

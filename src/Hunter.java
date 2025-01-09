@@ -76,7 +76,13 @@ public class Hunter
         return true;
     }
 
-    // Our TreasureKit List
+    /**
+     * Adds treasure to the treasure kit and checks if the treasure is also already in the treasure kit
+     *
+     * @param treasure The treasure the hunter found
+     *
+     * @return true if the item is successfully bought.
+     */
 
     public boolean addTreasure(String treasure){
         boolean contains = false;
