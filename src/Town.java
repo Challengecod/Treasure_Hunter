@@ -10,6 +10,8 @@ public class Town
     private Terrain terrain;
     private String printMessage;
     private boolean toughTown;
+    private boolean hardMode;
+    private boolean easyMode;
 
     //Constructor
     /**
@@ -17,7 +19,7 @@ public class Town
      * @param s The town's shoppe.
      * @param t The surrounding terrain.
      */
-    public Town(Shop shop, double toughness)
+    public Town(Shop shop, double toughness, boolean mode)
     {
         this.shop = shop;
         this.terrain = getNewTerrain();
@@ -30,6 +32,14 @@ public class Town
 
         // higher toughness = more likely to be a tough town
         toughTown = (Math.random() < toughness);
+
+        if(mode == true){
+            hardMode = true;
+        }
+        else{
+            easyMode = true;
+        }
+
     }
 
     public String getLatestNews()
@@ -110,7 +120,15 @@ public class Town
         else
         {
             printMessage = "You want trouble, stranger!  You got it!\nOof! Umph! Ow!\n";
-            int goldDiff = (int)(Math.random() * 10) + 1;
+            int goldDiff = 0;
+            if(hardMode) {
+                goldDiff = (int) (Math.random() * 10) + 1;
+            }
+
+            if(easyMode){
+                goldDiff = (int) (Math.random() * 30) + 1;
+            }
+
             if (Math.random() > noTroubleChance) // greater than 0.3
             {
                 printMessage += "Okay, stranger! You proved yer mettle. Here, take my gold.";
@@ -119,9 +137,28 @@ public class Town
             }
             else
             {
-                printMessage += "That'll teach you to go lookin' fer trouble in MY town! Now pay up!";
-                printMessage += "\nYou lost the brawl and pay " +  goldDiff + " gold.";
-                hunter.changeGold(-1 * goldDiff);
+                if(easyMode){
+                    if(goldDiff < 10) {
+                        printMessage += "That'll teach you to go lookin' fer trouble in MY town! Now pay up!";
+                        printMessage += "\nYou lost the brawl and you pay " + goldDiff + " gold.";
+                        hunter.changeGold(-1 * goldDiff);
+                    }
+
+                    else{
+
+                        printMessage += "That'll teach you to go lookin' fer trouble in MY town! Now pay up!";
+                        printMessage += "\nYou lost the brawl and you pay " + goldDiff + " gold. \n";
+                        goldDiff = goldDiff - 10;
+                        printMessage += "But your in easy mode so you pay " + goldDiff + " gold.";
+                        hunter.changeGold(-1 * goldDiff);
+                    }
+                }
+
+                else {
+                    printMessage += "That'll teach you to go lookin' fer trouble in MY town! Now pay up!";
+                    printMessage += "\nYou lost the brawl and pay " + goldDiff + " gold.";
+                    hunter.changeGold(-1 * goldDiff);
+                }
             }
         }
     }
