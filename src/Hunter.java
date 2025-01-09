@@ -30,6 +30,7 @@ public class Hunter
 
     }
 
+
     //Accessors
     public String getHunterName()
     {

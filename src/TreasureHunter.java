@@ -51,8 +51,8 @@ public class TreasureHunter
         String name = scanner.nextLine();
 
         // set hunter instance variable
-        hunter = new Hunter(name, 10);
-        String hard = "";
+//        hunter = new Hunter(name, 10);
+        String hard;
         boolean validChoice = false;
 
         while (!validChoice) {
@@ -60,10 +60,12 @@ public class TreasureHunter
             hard = scanner.nextLine();
             if (hard.equals("y") || hard.equals("Y")) {
                 System.out.println("You chose hard mode");
+                hunter = new Hunter(name, 10);
                 hardMode = true;
                 validChoice = true;
             }else if(hard.equals("n") || hard.equals("N")){
                 System.out.println("You chose easy mode");
+                hunter = new Hunter(name, 90);
                 easyMode = true;
                 validChoice = true;
             }else{
@@ -87,6 +89,8 @@ public class TreasureHunter
 
             // and the town is "tougher"
             toughness = 0.75;
+
+
         }
         if (easyMode)
         {
