@@ -13,6 +13,7 @@ public class TreasureHunter
     private Hunter hunter;
     private boolean hardMode;
     private boolean easyMode;
+    private boolean cheatMode;
     private Treasure treasure;
     private int newTown = 0;
 
@@ -28,6 +29,7 @@ public class TreasureHunter
         hunter = null;
         hardMode = false;
         easyMode = false;
+        cheatMode = false;
     }
 
     // starts the game; this is the only public method
@@ -68,7 +70,12 @@ public class TreasureHunter
                 hunter = new Hunter(name, 90);
                 easyMode = true;
                 validChoice = true;
-            }else{
+            } else if (hard.equals("C") || hard.equals("c")) {
+                System.out.println("Your in cheat mode!!");
+                hunter = new Hunter(name, 100000);
+                cheatMode = true;
+            }
+            else {
                 System.out.println("Choose again");
             }
         }
@@ -90,7 +97,6 @@ public class TreasureHunter
             // and the town is "tougher"
             toughness = 0.75;
 
-
         }
         if (easyMode)
         {
@@ -99,15 +105,35 @@ public class TreasureHunter
             toughness = 0.40;
         }
 
+        if(cheatMode)
+        {
+            markdown = 1.5;
+        }
+
+
         // note that we don't need to access the Shop object
         // outside of this method, so it isn't necessary to store it as an instance
         // variable; we can leave it as a local variable
         Shop shop = new Shop(markdown);
 
+
+
         // creating the new Town -- which we need to store as an instance
         // variable in this class, since we need to access the Town
         // object in other methods of this class
-        currentTown = new Town(shop, toughness, hardMode);
+        if (hardMode) {
+            currentTown = new Town(shop, toughness, "hard");
+        }
+
+        if (easyMode) {
+            currentTown = new Town(shop, toughness, "easy");
+        }
+
+        if(cheatMode){
+            currentTown = new Town(shop, toughness, "cheat");
+        }
+
+
 
         // calling the hunterArrives method, which takes the Hunter
         // as a parameter; note this also could have been done in the

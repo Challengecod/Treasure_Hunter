@@ -16,12 +16,20 @@ public class Shop
     // instance variables
     private double markdown;
     private Hunter customer;
+    private boolean cheatMode = false;
 
     //Constructor
     public Shop(double markdown)
     {
         this.markdown = markdown;
         customer = null;
+    }
+
+    public Shop(double markdown, boolean cheatMode)
+    {
+        this.markdown = markdown;
+        customer = null;
+        this.cheatMode = cheatMode;
     }
 
     /** method for entering the shop
