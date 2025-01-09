@@ -59,9 +59,11 @@ public class TreasureHunter
             System.out.print("Hard mode? (y/n): ");
             hard = scanner.nextLine();
             if (hard.equals("y") || hard.equals("Y")) {
+                System.out.println("You chose hard mode");
                 hardMode = true;
                 validChoice = true;
             }else if(hard.equals("n") || hard.equals("N")){
+                System.out.println("You chose easy mode");
                 easyMode = true;
                 validChoice = true;
             }else{
@@ -85,6 +87,11 @@ public class TreasureHunter
 
             // and the town is "tougher"
             toughness = 0.75;
+        }
+        if (easyMode)
+        {
+            markdown = 1;
+            toughness = 0.40;
         }
 
         // note that we don't need to access the Shop object
