@@ -7,6 +7,7 @@ public class Treasure {
     private boolean first = false;
     private boolean second = false;
     private boolean third = false;
+    private String printMessage = "";
 
     private Hunter hunter;
     // the three types of treasures
@@ -17,35 +18,43 @@ public class Treasure {
 
     public void discardTreasure(String treasure){
         hunter.removeTreasureFromKit(treasure);
-        System.out.println(hunter.getTreasureInventory());
+        printMessage = hunter.getTreasureInventory();
 
     }
 
+    public String getPrintMessage(){
+        return printMessage;
+    }
+
+
 
     public void findTreasure() {
-        if (allTreasureFound()) {
+        if (!allTreasureFound()) {
             String treasureFound = treasureChance();
 
             if (!treasureFound.equals("Nothing found")) {
 
                 if (hunter.addTreasure(treasureFound)) {
-                    System.out.println("Congrats you have found " + treasureFound + "!");
-                    System.out.println("You have already found " + treasureFound + " before.");
-                    System.out.println(hunter.getTreasureInventory());
-                    System.out.println("You should discard the treasure");
+                    printMessage = "Congrats you have found " + treasureFound + "! \n" +
+                                    "You have already found " + treasureFound + " before. \n" +
+                                    hunter.getTreasureInventory() +  "\n" +
+                                    "You should discard the treasure";
 
-                } else {
-                    System.out.println("Congrats you have found " + treasureFound + "!");
-                    System.out.println(hunter.getTreasureInventory());
                 }
-            } else {
-                System.out.println("You didn't find anything! \uD83D\uDE2D ");
+
+                else {
+                    printMessage = "Congrats you have found " + treasureFound + "! \n" +
+                                    hunter.getTreasureInventory();
+                }
             }
 
+            else {
+                printMessage = "You didn't find anything! \uD83D\uDE2D ";
+            }
         }
 
         else{
-            System.out.println("Game Ends! ");;
+            printMessage = "Game Ends! ";
         }
     }
 

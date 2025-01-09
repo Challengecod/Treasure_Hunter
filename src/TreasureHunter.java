@@ -159,6 +159,7 @@ public class TreasureHunter
             if(newTown == 0) {
                 System.out.println("Finding treasure");
                 treasure.findTreasure();
+                System.out.println(treasure.getPrintMessage());
             }
             else{
                 System.out.println("Finding treasure may only be used once a town");
