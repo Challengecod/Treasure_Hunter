@@ -22,30 +22,31 @@ public class Treasure {
     }
 
 
-    public void findTreasure(){
+    public void findTreasure() {
+        if (allTreasureFound()) {
+            String treasureFound = treasureChance();
 
-        String treasureFound = treasureChance();
+            if (!treasureFound.equals("Nothing found")) {
 
-        if(!treasureFound.equals("Nothing found")) {
+                if (hunter.addTreasure(treasureFound)) {
+                    System.out.println("Congrats you have found " + treasureFound + "!");
+                    System.out.println("You have already found " + treasureFound + " before.");
+                    System.out.println(hunter.getTreasureInventory());
+                    System.out.println("You should discard the treasure");
 
-            if (hunter.addTreasure(treasureFound)) {
-                System.out.println("Congrats you have found " + treasureFound + "!");
-                System.out.println("You have already found " + treasureFound + " before.");
-                System.out.println(hunter.getTreasureInventory());
-                System.out.println("You should discard the treasure");
-
+                } else {
+                    System.out.println("Congrats you have found " + treasureFound + "!");
+                    System.out.println(hunter.getTreasureInventory());
+                }
+            } else {
+                System.out.println("You didn't find anything! \uD83D\uDE2D ");
             }
 
-            else {
-                System.out.println("Congrats you have found " + treasureFound + "!");
-                System.out.println(hunter.getTreasureInventory());
-            }
         }
 
         else{
-            System.out.println("You didn't find anything! \uD83D\uDE2D ");
+            System.out.println("Game Ends! ");;
         }
-
     }
 
 
@@ -71,8 +72,14 @@ public class Treasure {
         return "Nothing found";
     }
 
-    public void addTreasureKit(){
-        treasureChance();
+    public boolean allTreasureFound(){
+       if(first && second && third){
+           return true;
+       }
+
+       else{
+           return false;
+       }
     }
 
 
