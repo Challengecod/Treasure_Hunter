@@ -12,6 +12,7 @@ public class TreasureHunter
     private Town currentTown;
     private Hunter hunter;
     private boolean hardMode;
+    private boolean easyMode;
     private Treasure treasure;
     private int newTown = 0;
 
@@ -26,6 +27,7 @@ public class TreasureHunter
         currentTown = null;
         hunter = null;
         hardMode = false;
+        easyMode = false;
     }
 
     // starts the game; this is the only public method
@@ -50,12 +52,23 @@ public class TreasureHunter
 
         // set hunter instance variable
         hunter = new Hunter(name, 10);
+        String hard = "";
+        boolean validChoice = false;
 
-        System.out.print("Hard mode? (y/n): ");
-        String hard = scanner.nextLine();
-        if (hard.equals("y") || hard.equals("Y"))
-        {
-            hardMode = true;
+        while (!validChoice) {
+            System.out.print("Hard mode? (y/n): ");
+            hard = scanner.nextLine();
+            if (hard.equals("y") || hard.equals("Y")) {
+                System.out.println("You chose hard mode");
+                hardMode = true;
+                validChoice = true;
+            }else if(hard.equals("n") || hard.equals("N")){
+                System.out.println("You chose easy mode");
+                easyMode = true;
+                validChoice = true;
+            }else{
+                System.out.println("Choose again");
+            }
         }
     }
 
@@ -74,6 +87,11 @@ public class TreasureHunter
 
             // and the town is "tougher"
             toughness = 0.75;
+        }
+        if (easyMode)
+        {
+            markdown = 1;
+            toughness = 0.40;
         }
 
         // note that we don't need to access the Shop object
