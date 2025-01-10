@@ -168,30 +168,14 @@ public class Shop
         if(cheatMode){
             return 1;
         }
-        if (item.equals("Water"))
-        {
-            return WATER_COST;
-        }
-        else if (item.equals("Rope"))
-        {
-            return ROPE_COST;
-        }
-        else if (item.equals("Machete"))
-        {
-            return MACHETE_COST;
-        }
-        else if (item.equals("Horse"))
-        {
-            return HORSE_COST;
-        }
-        else if (item.equals("Boat"))
-        {
-            return BOAT_COST;
-        }
-        else
-        {
-            return 0;
-        }
+        return switch (item) {
+            case "Water" -> WATER_COST;
+            case "Rope" -> ROPE_COST;
+            case "Machete" -> MACHETE_COST;
+            case "Horse" -> HORSE_COST;
+            case "Boat" -> BOAT_COST;
+            default -> 0;
+        };
     }
 
     /**
