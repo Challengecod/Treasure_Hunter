@@ -165,6 +165,9 @@ public class Shop
      */
     public int getCostOfItem(String item)
     {
+        if(cheatMode){
+            return 1;
+        }
         if (item.equals("Water"))
         {
             return WATER_COST;
