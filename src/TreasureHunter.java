@@ -75,6 +75,7 @@ public class TreasureHunter
                 System.out.println("Your in cheat mode!!");
                 hunter = new Hunter(name, 100000);
                 cheatMode = true;
+                validChoice = true;
             }
             else {
                 System.out.println("Choose again");
