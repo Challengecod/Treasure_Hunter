@@ -134,8 +134,6 @@ public class TreasureHunter
             currentTown = new Town(shop, toughness, "cheat");
         }
 
-
-
         // calling the hunterArrives method, which takes the Hunter
         // as a parameter; note this also could have been done in the
         // constructor for Town, but this illustrates another way to associate
@@ -233,13 +231,17 @@ public class TreasureHunter
             if(hunter.getGold() > 0) {
                 Scanner scanner = new Scanner(System.in);
                 System.out.println("You've entered a Casino!");
-                System.out.println("Type how much you want to wager: ");
+                System.out.print("Type how much you want to wager: ");
                 String wager = scanner.nextLine();
                 int wagerNumber = Integer.parseInt(wager); // 5
                 if(wagerNumber <= hunter.getGold()) {
                     System.out.println("You've Wagered: " + wagerNumber + " gold!");
-                    hunter.changeGold(wagerNumber*-1); // 10 - 5 = 5
-                    casino.rollDice(wagerNumber); // 5
+                    hunter.changeGold(wagerNumber*-1);
+                    System.out.println("What is your guess (1-12)?");
+                    System.out.print("Your guess: ");
+                    String guess = scanner.nextLine();
+                    int guessNumber = Integer.parseInt(guess);
+                    casino.rollDice(guessNumber); // 5
                     System.out.println(casino.getPrintMessage());
                 }
                 else{
