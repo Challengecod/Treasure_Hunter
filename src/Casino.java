@@ -11,26 +11,27 @@ public class Casino {
     public void rollDice(int wagerGold ){
 
         // 1-12 max = 12 min = 1
-        int rollNumber = (int) (Math.random() * (12 - 1 + 1 )) + 1;
+//        int rollNumber = (int) (Math.random() * (12 - 1 + 1 )) + 1;
+        int rollNumber  = 5;
         printMessage = "The Dice is ROLLED! *Drum Roll* \n" +
                 "The Dice roll is " + rollNumber + ".";
 
         if(rollNumber == wagerGold){
 
-            wagerGold = wagerGold*2;
-            customer.changeGold(wagerGold);
-            printMessage += "\nNice you guessed the lucky roll!\n You get double the gold back!" + "\n Gold amount: " + customer.getGold();
+            wagerGold = wagerGold * 2; // 10
+            customer.changeGold(wagerGold); // 20
+            printMessage += "\nNice you guessed the lucky roll! \nYou get double the gold back!" + "\nGold amount: " + customer.getGold();
         }
 
         else if (rollNumber - wagerGold == 1 || rollNumber - wagerGold == 2 || rollNumber - wagerGold == -2 || rollNumber - wagerGold == -1) {
             customer.changeGold(wagerGold);
-            printMessage += "\nTwo away from the roll and so you get all of the gold you wagered back!" +
+            printMessage += "\nWithin two away from the roll and so you get all of the gold you wagered back!" +
                     "\nGold: " + customer.getGold();
 
         }
         else{
 
-            printMessage += "\nUnlucky, you lose " + wagerGold + "gold \nCome back next time!";
+            printMessage += "\nUnlucky, you lose " + wagerGold + " gold \nCome back next time!";
         }
     }
 

@@ -54,6 +54,7 @@ public class Hunter
         {
             gold = 0;
         }
+
     }
 
     /**
