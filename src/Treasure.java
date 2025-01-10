@@ -86,7 +86,6 @@ public class Treasure {
            return true;
        }
 
-
            return false;
 
     }

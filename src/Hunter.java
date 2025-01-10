@@ -115,7 +115,7 @@ public class Hunter
         if (itmIdx >= 0)
         {
             String tmpKit = treasureKit.substring(0, itmIdx);
-            tmpKit = tmpKit + treasureKit.length();
+            itmIdx = itmIdx + item.length();
             tmpKit += treasureKit.substring(itmIdx + 1);
 
             // update kit

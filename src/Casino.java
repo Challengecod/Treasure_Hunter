@@ -27,7 +27,6 @@ public class Casino {
             customer.changeGold(wagerGold);
             printMessage += "\nWithin two away from the roll and so you get all of the gold you wagered back!" +
                     "\nGold: " + customer.getGold();
-
         }
         else{
 
