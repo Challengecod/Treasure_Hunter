@@ -235,7 +235,16 @@ public class TreasureHunter
                 System.out.println("You've entered a Casino!");
                 System.out.println("Type how much you want to wager: ");
                 String wager = scanner.nextLine();
-                casino.rollDice(Integer.parseInt(wager));
+                int wagerNumber = Integer.parseInt(wager);
+                if(wagerNumber <= hunter.getGold()) {
+                    System.out.println("You've Wagered: " + wagerNumber + " gold!");
+                    casino.rollDice(wagerNumber);
+                    hunter.changeGold(wagerNumber*-1);
+                    System.out.println(casino.getPrintMessage());
+                }
+                else{
+                    System.out.println("You don't own that many gold.");
+                }
 
             }
             else{
