@@ -93,14 +93,13 @@ public class Shop
      *
      * @return  the string representing the shop's items available for purchase and their prices
      */
-    public String inventory()
+  public String inventory()
     {
-        String str = "Water: " + WATER_COST + " gold\n";
-        str += "Rope: " + ROPE_COST + " gold\n";
-        str += "Machete: " + MACHETE_COST + " gold\n";
-        str += "Horse: " + HORSE_COST + " gold\n";
-        str += "Boat: " + BOAT_COST + " gold\n";
-
+        String str = "Water: " + getCostOfItem("Water") + "\n";
+        str += "Rope: " + getCostOfItem("Rope") + "\n";
+        str += "Machete: " + getCostOfItem("Machete") + "\n";
+        str += "Horse: " + getCostOfItem("Horse") + "\n";
+        str += "Boat: " + getCostOfItem("Boat") + "\n";
         return str;
     }
 
