@@ -93,14 +93,13 @@ public class Shop
      *
      * @return  the string representing the shop's items available for purchase and their prices
      */
-    public String inventory()
+  public String inventory()
     {
-        String str = "Water: " + WATER_COST + " gold\n";
-        str += "Rope: " + ROPE_COST + " gold\n";
-        str += "Machete: " + MACHETE_COST + " gold\n";
-        str += "Horse: " + HORSE_COST + " gold\n";
-        str += "Boat: " + BOAT_COST + " gold\n";
-
+        String str = "Water: " + getCostOfItem("Water") + "\n";
+        str += "Rope: " + getCostOfItem("Rope") + "\n";
+        str += "Machete: " + getCostOfItem("Machete") + "\n";
+        str += "Horse: " + getCostOfItem("Horse") + "\n";
+        str += "Boat: " + getCostOfItem("Boat") + "\n";
         return str;
     }
 
@@ -165,30 +164,17 @@ public class Shop
      */
     public int getCostOfItem(String item)
     {
-        if (item.equals("Water"))
-        {
-            return WATER_COST;
+        if(cheatMode){
+            return 1;
         }
-        else if (item.equals("Rope"))
-        {
-            return ROPE_COST;
-        }
-        else if (item.equals("Machete"))
-        {
-            return MACHETE_COST;
-        }
-        else if (item.equals("Horse"))
-        {
-            return HORSE_COST;
-        }
-        else if (item.equals("Boat"))
-        {
-            return BOAT_COST;
-        }
-        else
-        {
-            return 0;
-        }
+        return switch (item) {
+            case "Water" -> WATER_COST;
+            case "Rope" -> ROPE_COST;
+            case "Machete" -> MACHETE_COST;
+            case "Horse" -> HORSE_COST;
+            case "Boat" -> BOAT_COST;
+            default -> 0;
+        };
     }
 
     /**
