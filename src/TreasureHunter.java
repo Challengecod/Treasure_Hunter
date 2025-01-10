@@ -16,8 +16,8 @@ public class TreasureHunter
     private boolean easyMode;
     private boolean cheatMode;
     private Treasure treasure;
+    private Casino casino;
     private int newTown = 0;
-
 
     //Constructor
     /**
@@ -53,8 +53,7 @@ public class TreasureHunter
         System.out.print("What's your name, Hunter? ");
         String name = scanner.nextLine();
 
-        // set hunter instance variable
-//        hunter = new Hunter(name, 10);
+
         String hard;
         boolean validChoice = false;
 
@@ -144,6 +143,9 @@ public class TreasureHunter
 
         // treasure
         treasure = new Treasure(hunter);
+
+        // casino
+        casino = new Casino(hunter);
     }
 
     /**
@@ -232,6 +234,8 @@ public class TreasureHunter
                 System.out.println("You've entered a Casino!");
                 System.out.println("Type how much you want to wager: ");
                 String wager = scanner.nextLine();
+                casino.rollDice(Integer.parseInt(wager));
+
             }
             else{
                 System.out.println("You don't have enough gold to play at the Casino.");
