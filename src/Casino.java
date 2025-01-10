@@ -8,22 +8,22 @@ public class Casino {
         printMessage = "";
     }
 
-    public void rollDice(int wagerGold ){
-
+    public void rollDice(int numberGuessed, int goldWagered ){
+        this.wagerGold = goldWagered;
         // 1-12 max = 12 min = 1
         int rollNumber = (int) (Math.random() * (12 - 1 + 1 )) + 1;
         
         printMessage = "The Dice is ROLLED! *Drum Roll* \n" +
                 "The Dice roll is " + rollNumber + ".";
 
-        if(rollNumber == wagerGold){
+        if(rollNumber == numberGuessed){
 
             wagerGold = wagerGold * 2; // 10
             customer.changeGold(wagerGold); // 20
             printMessage += "\nNice you guessed the lucky roll! \nYou get double the gold back!" + "\nGold amount: " + customer.getGold();
         }
 
-        else if (rollNumber - wagerGold == 1 || rollNumber - wagerGold == 2 || rollNumber - wagerGold == -2 || rollNumber - wagerGold == -1) {
+        else if (rollNumber - numberGuessed == 1 || rollNumber - numberGuessed == 2 || rollNumber - numberGuessed == -2 || rollNumber - numberGuessed == -1) {
             customer.changeGold(wagerGold);
             printMessage += "\nWithin two away from the roll and so you get all of the gold you wagered back!" +
                     "\nGold: " + customer.getGold();

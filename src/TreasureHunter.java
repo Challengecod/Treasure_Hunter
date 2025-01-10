@@ -241,7 +241,7 @@ public class TreasureHunter
                     System.out.print("Your guess: ");
                     String guess = scanner.nextLine();
                     int guessNumber = Integer.parseInt(guess);
-                    casino.rollDice(guessNumber); // 5
+                    casino.rollDice(guessNumber, wagerNumber); // 5
                     System.out.println(casino.getPrintMessage());
                 }
                 else{
