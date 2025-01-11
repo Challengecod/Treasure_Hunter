@@ -18,6 +18,7 @@ public class TreasureHunter
     private Treasure treasure;
     private Casino casino;
     private int newTown = 0;
+    private String gameEnds = "";
 
     //Constructor
     /**
@@ -157,7 +158,7 @@ public class TreasureHunter
         Scanner scanner = new Scanner(System.in);
         String choice = "";
 
-        while (!(choice.equals("X") || choice.equals("x")))
+        while (!(choice.equals("X") || choice.equals("x") || gameEnds.equals("x")))
         {
             System.out.println();
             System.out.println(currentTown.getLatestNews());
@@ -212,6 +213,9 @@ public class TreasureHunter
                 System.out.println("Finding treasure");
                 treasure.findTreasure();
                 System.out.println(treasure.getPrintMessage());
+                if(treasure.getPrintMessage().equals("Game Ends!")){
+                    gameEnds = "x";
+                }
             }
             else{
                 System.out.println("Finding treasure may only be used once a town");
@@ -220,6 +224,7 @@ public class TreasureHunter
 
             newTown = newTown + 1;
         }
+
         else if (choice.equals("D") || choice.equals("d")){
             Scanner scanner = new Scanner(System.in);
             System.out.println("Type the treasure you want to discard: ");
@@ -254,7 +259,7 @@ public class TreasureHunter
                 System.out.println("Come Back once you have more gold!");
             }
         }
-        else if (choice.equals("X") || choice.equals("x"))
+        else if (choice.equals("X") || choice.equals("x") || gameEnds.equals("x"))
         {
             System.out.println("Fare thee well, " + hunter.getHunterName() + "!");
         }

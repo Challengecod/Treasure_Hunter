@@ -54,7 +54,7 @@ public class Treasure {
         }
 
         else{
-            printMessage = "Game Ends! ";
+            printMessage = "Congratulations you've found all of the treasures! \nGame Ends!";
         }
     }
 

@@ -23,13 +23,13 @@ public class Casino {
             printMessage += "\nNice you guessed the lucky roll! \nYou get double the gold back!" + "\nGold amount: " + customer.getGold();
         }
 
-        else if (rollNumber - numberGuessed == 1 || rollNumber - numberGuessed == 2 || rollNumber - numberGuessed == -2 || rollNumber - numberGuessed == -1) {
+        else if (rollNumber - numberGuessed == 1 || rollNumber - numberGuessed == 2 ||
+                rollNumber - numberGuessed == -2 || rollNumber - numberGuessed == -1) {
             customer.changeGold(wagerGold);
             printMessage += "\nWithin two away from the roll and so you get all of the gold you wagered back!" +
                     "\nGold: " + customer.getGold();
         }
         else{
-
             printMessage += "\nUnlucky, you lose " + wagerGold + " gold \nCome back next time!";
         }
     }
