@@ -10,8 +10,11 @@ public class Casino {
 
     public void rollDice(int numberGuessed, int goldWagered ){
         this.wagerGold = goldWagered;
-        // 1-12 max = 12 min = 1
-        int rollNumber = (int) (Math.random() * (12 - 1 + 1 )) + 1;
+        // 1-12 max = 6 min = 1
+
+        int rollNumber = (int) (Math.random() * (6 - 1 + 1 )) + 1;
+        int secondRoll= (int) (Math.random() * (6 - 1 + 1 )) + 1;
+        rollNumber = rollNumber + secondRoll;
         
         printMessage = "The Dice is ROLLED! *Drum Roll* \n" +
                 "The Dice roll is " + rollNumber + ".";
